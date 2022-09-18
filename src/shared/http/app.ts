@@ -1,19 +1,21 @@
+import 'reflect-metadata';
 import express, { Express, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
+import '@shared/typeorm';
 
 class App {
   public server: Express;
 
   constructor() {
     this.server = express();
-    this.middlewares();
+    this.config();
     this.routes();
     this.middlewaresErrors();
   }
 
-  middlewares() {
+  config() {
     this.server.use(cors());
     this.server.use(express.json());
   }
