@@ -6,6 +6,7 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import { errors } from 'celebrate';
+import uploadConfig from '@config/upload';
 
 class App {
   public server: Express;
@@ -48,6 +49,7 @@ class App {
   }
 
   routes() {
+    this.server.use('/files', express.static(uploadConfig.directory));
     this.server.use(routes);
   }
 }
