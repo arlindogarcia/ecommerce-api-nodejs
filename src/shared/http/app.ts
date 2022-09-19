@@ -1,9 +1,11 @@
 import 'reflect-metadata';
 import express, { Express, NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
+import { errors } from 'celebrate';
 
 class App {
   public server: Express;
@@ -21,6 +23,8 @@ class App {
   }
 
   middlewaresErrors() {
+    this.server.use(errors());
+
     this.server.use(
       (
         error: Error,
