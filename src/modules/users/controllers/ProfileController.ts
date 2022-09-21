@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ShowProfileService from '../services/ShowProfileService';
-import UpdateProfileService from '../services/UpdateProfileService copy';
+import UpdateProfileService from '../services/UpdateProfileService';
 
 export default class ProfileController {
   public async show(request: Request, response: Response): Promise<Response> {
